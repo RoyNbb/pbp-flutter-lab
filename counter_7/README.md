@@ -4,14 +4,22 @@ Stateless Widget adalah widget yang tidak akan berubah (statis) tampilannya. Sed
 ## Widget yang dipakai dalam oriyek ini
 1. Center
 Widget yang menaruh elemen didalamnya pada tengah-tengah layar
-2. Column
-Widget yang menaruh anaknya dalam array vertical
-3. Row
-Widget yang menaruh anaknya dalam array horizontal
-4. Text
+2. Column: 
+Widget yang menaruh children dalam array vertical
+3. Row: 
+Widget yang menaruh children dalam array horizontal
+4. Text: 
 Widget yang menampilkan teks, serta memberinya style
-5. FloatingActionButton
-Icon button yang "hover" diatas konten untuk menunjukkan aksi utama yang dapat dilakukan dalam aplikasi
+5. FloatingActionButton:
+widget button yang "hover"/melayang diatas konten untuk menunjukkan aksi utama yang dapat dilakukan dalam aplikasi
+6. Appbar:
+Widget yang berperan sebagai menu penunjuk
+7. Scaffold: 
+widget utama dalam flutter untuk menampilkan halaman
+8. Icon: 
+widget yang menampilkan icon 
+9. Padding:
+widget yang memberikan jarak antar elemennya
 
 ## Fungsi dari setState()
 Fungsi dari setState() adalah untuk memberi tahu framework bahwa internal state dari objek tersebut telah berubah. Dengan setState(), framework akan melakukan build untuk objek State tersebut karena ada perubahan yang dapat mengubah interface dari pengguna. Variabel yang akan berubah adalah variabel yang kita manipulasi dalam pemanggilan setState().
