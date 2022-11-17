@@ -10,11 +10,13 @@ class ShowDataPage extends StatefulWidget {
 }
 
 class _ShowDataPage extends State<ShowDataPage> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Data Budget'),
+        title: const Text('Data Budget'),
       ),
       drawer: const DrawerApp(),
       body: Center(
@@ -23,7 +25,7 @@ class _ShowDataPage extends State<ShowDataPage> {
         itemBuilder: (context, index) {
           return ListTile(
             title: Text(budgets[index].judul),
-            subtitle: Text(budgets[index].nominal.toString()),
+            subtitle: Text(' ${budgets[index].nominal.toString()} \n ${budgets[index].tanggalBudget.toString()}'),
             trailing: Text(budgets[index].jenisBudget),
           );
         },
