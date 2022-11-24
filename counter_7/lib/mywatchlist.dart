@@ -47,7 +47,8 @@ class _MyWatchListPageState extends State<MyWatchListPage> {
           title: const Text('My Watch List'),
         ),
         drawer: const DrawerApp(),
-        body: FutureBuilder(
+        body: Column(children: [
+          FutureBuilder(
             future: fetchToWatch(),
             builder: (context, AsyncSnapshot snapshot) {
               if (snapshot.data == null) {
@@ -106,6 +107,10 @@ class _MyWatchListPageState extends State<MyWatchListPage> {
                           ));
                 }
               }
-            }));
+            }),
+            const Text("test"),
+        ],)
+        
+        );
   }
 }

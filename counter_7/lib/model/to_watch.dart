@@ -3,6 +3,7 @@
 //     final ToWatch = ToWatchFromJson(jsonString);
 
 import 'dart:convert';
+import 'dart:ffi';
 
 List<ToWatch> toWatchFromJson(String str) =>
     List<ToWatch>.from(json.decode(str).map((x) => ToWatch.fromJson(x)));
@@ -20,7 +21,7 @@ class ToWatch {
   });
 
   String title;
-  int rating;
+  Double rating;
   String releaseDate;
   bool watched;
   String review;
