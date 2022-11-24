@@ -74,3 +74,17 @@ Navigator mengatur stack of Routes yang ada dalam suatu app FLutter. Terdapat du
 
 ## Cara saya mengimplementasikan checklist
 Yang pertama saya lakukan adalah membuat dua file dart kosong baru yaitu form.dart yang akan berfungsi saat ingin menambahkan budget dan showbudget.dart yang akan berfungsi saat ingin menampilkan daftar budget yang telah dibuat. Setelah itu, saya membuat suatu App pada file baru bernama drawer.app, app tersebut bernama DrawerApp. App ini akan digunakan pada laman lainnya untuk menampilkan drawer yang berisi navigasi laman bagi pengguna. Lalu, saya membuat suatu file global.dart dan mengisinya dengan suatu class bernama Budget yang akan merepresentasikan budget, serta membuat suatu list kosong dengan isi object dari class tersebut. Setelah itu saya mengedit form.dart menjadi import global.dart dan menambahkan form yang akan menampilkan input sesuai dengan atribut class Budget sehingga saat pengguna melakukan submit, program akan membuat object Budget dan menyimpannya pada list yang ada di global.dart. Pada show_budget.dart, saya menampilkan budget-budget dengan cara import globals.dart dan menampilkan seluruh item yang ada pada list tersebut dengan menggunakan ListView.builder.
+
+# Assignment 9
+
+## Pengambilan data JSON tanpa membuat model?
+Hal tersebut memungkinkan dengan menggunakan function jsonDecode(), namun membuat model untuk pengambilan data lebih memudahkan developer
+
+## Widget yang digunakan
+1. Inkwell : Widget persegi panjang yang merespont pada ketukan (touch)
+
+## Mekanisme menampilkan data dari JSON
+Yang pertama perlu dilakukan adalah memberikan url JSOn yang ingin diambil pada API nya. Kita akan mendapatkan data JSON dalam bentuk string. Agar dapat kita gunakan sesuai dengan kemauan pada kode kita, kita dapat mengubahnya kembali ke format JSON dengan menggunakan jsonDecode() dan juga menggunakan class model yang telah dibuat untuk membuat object sesuai data json.
+
+## Cara saya mengimplementasikan checklist
+Yang pertama saya lakukan adalah membuat 2 file dart baru yait mywatchlist.dart (menampilkan list to watch) dan movie.dart (menampilkan detail). Setelah itu saya menambahkan  ListTile baru pada drawer.dart yang akan mengarah ke mywatchlist.dart. Saya juga membuat model yang akan membuat object sesuai dengan data JSON yang ingin di-parse. Setelah itu saya melakukan fetch data JSON pada file mywatchlist.dart dan menampilkan data tersebut. Agar pengguna dapat melihat detail dari movie, saya menggunakan InkWell untuk mengarahkan pengguna ke laman detail degan mengatur atribut onTap() nya dan mengarahkannya ke movie.dart dengan object yang sesuai.

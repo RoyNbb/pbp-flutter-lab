@@ -2,6 +2,7 @@ import 'package:counter_7/showbudget.dart';
 import 'package:flutter/material.dart';
 import 'package:counter_7/main.dart';
 import 'package:counter_7/form.dart';
+import 'package:counter_7/mywatchlist.dart';
 
 class DrawerApp extends StatelessWidget {
   const DrawerApp({super.key});
@@ -48,6 +49,18 @@ class DrawerApp extends StatelessWidget {
             },
           ),
 
+          //menuju laman menampilkan daftar budget
+          ListTile(
+            title: const Text('My Watchlist'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const MyWatchListPage(),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );

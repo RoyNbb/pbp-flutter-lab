@@ -85,13 +85,13 @@ class _MyHomePageState extends State<MyHomePage> {
             children:[
               (_indicator == 'GENAP')?
                 Text(
-                  '$_indicator',
+                  _indicator,
                   style: const TextStyle(
                     color: Colors.red,
                   )
                 )
               : Text(
-                  '$_indicator',
+                  _indicator,
                   style: const TextStyle(
                     color: Colors.blue,
                   )
