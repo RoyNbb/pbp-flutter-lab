@@ -55,7 +55,7 @@ class Movie extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text("${movie.rating}/5",
+                    Text("${movie.rating}/10",
                         style: const TextStyle(
                           fontSize: 20.0,
                         ))

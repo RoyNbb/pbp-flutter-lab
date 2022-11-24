@@ -1,8 +1,7 @@
 import 'package:counter_7/drawer.dart';
 import 'package:counter_7/movie.dart';
+import 'package:counter_7/fetch/fetch_watchlist.dart';
 
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'package:counter_7/model/to_watch.dart';
 
 import 'package:flutter/material.dart';
@@ -15,30 +14,7 @@ class MyWatchListPage extends StatefulWidget {
 }
 
 class _MyWatchListPageState extends State<MyWatchListPage> {
-  Future<List<ToWatch>> fetchToWatch() async {
-    var url = Uri.parse(
-        'https://pbp-assignment-2-roynbb.herokuapp.com/mywatchlist/json/');
-    var response = await http.get(
-      url,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-      },
-    );
-
-    // melakukan decode response menjadi bentuk json
-    var data = jsonDecode(utf8.decode(response.bodyBytes));
-
-    // melakukan konversi data json menjadi object ToDo
-    List<ToWatch> listToWatch = [];
-    for (var d in data) {
-      if (d != null) {
-        listToWatch.add(ToWatch.fromJson(d));
-      }
-    }
-
-    return listToWatch;
-  }
+    final Future<List<ToWatch>> fetched = fetchToWatch();
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +23,9 @@ class _MyWatchListPageState extends State<MyWatchListPage> {
           title: const Text('My Watch List'),
         ),
         drawer: const DrawerApp(),
-        body: Column(children: [
+        body:
           FutureBuilder(
-            future: fetchToWatch(),
+            future: fetched,
             builder: (context, AsyncSnapshot snapshot) {
               if (snapshot.data == null) {
                 return const Center(child: CircularProgressIndicator());
@@ -83,7 +59,7 @@ class _MyWatchListPageState extends State<MyWatchListPage> {
                               ),
                               padding: const EdgeInsets.all(20.0),
                               decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: snapshot.data![index].watched == true ? Colors.green :Colors.red,
                                   borderRadius: BorderRadius.circular(15.0),
                                   boxShadow: const [
                                     BoxShadow(
@@ -93,14 +69,26 @@ class _MyWatchListPageState extends State<MyWatchListPage> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    "${snapshot.data![index].title}",
-                                    style: const TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.bold,
+                                  Row(children: [
+                                    Text(
+                                      "${snapshot.data![index].title}",
+                                      style: const TextStyle(
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
-                                  ),
-                                  const SizedBox(height: 10),
+                                    const SizedBox(height: 10),
+                                    Checkbox(
+                                      value: snapshot.data![index].watched,
+                                      activeColor: Colors.green,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          snapshot.data![index].watched =
+                                            value!;
+                                        });
+                                      }
+                                    ),
+                                  ],)
                                 ],
                               ),
                             ),
@@ -108,8 +96,6 @@ class _MyWatchListPageState extends State<MyWatchListPage> {
                 }
               }
             }),
-            const Text("test"),
-        ],)
         
         );
   }
